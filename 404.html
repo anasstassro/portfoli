@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Страница не найдена | Анастасия Роженкова</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Days+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505;--text:#ffffff;--muted:#cfcfcf;--accent:#ff4d00;
+  --brown:#4d382d;--line:#242424;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font-main:'Montserrat',sans-serif;--font-head:'Days One',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-main);font-weight:400;font-size:15px;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+
+/* ============ DECORATIVE BACKGROUND LINES ============ */
+.bg-decor-lines {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-decor-lines svg {
+  width: 100%; height: 100%;
+  opacity: 0.4;
+}
+.bg-line-path {
+  fill: none;
+  stroke: #A65F42;
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+.bg-line-1 { animation: floatLine1 25s ease-in-out infinite alternate; }
+.bg-line-2 { animation: floatLine2 30s ease-in-out infinite alternate; }
+
+@keyframes floatLine1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 15px) scale(1.02); }
+  100% { transform: translate(10px, -10px) scale(0.98); }
+}
+@keyframes floatLine2 {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(15px, -20px) rotate(1deg); }
+  100% { transform: translate(-10px, 10px) rotate(-1deg); }
+}
+
+/* ============ HEADER ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(77, 56, 45, 0.95); /* Коричневый фон как на скрине */
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.header-in{
+  max-width:1160px;margin:0 auto;padding:0 24px;
+  height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.nav-links{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.nav-links a{
+  font-size:13px;font-weight:500;color:#f2f2f2;
+  transition:color .3s ease;
+}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:#fff;
+  transition:color .3s ease;
+}
+.nav-cta:hover{color:var(--accent)}
+.nav-cta .arr{transition:transform .35s var(--ease)}
+.nav-cta:hover .arr{transform:translate(4px,-4px)}
+
+@media (max-width:768px){
+  .nav-links{display:none} /* Скрываем меню на мобильных для простоты 404 */
+}
+
+/* ============ MARQUEE STRIP ============ */
+.marquee-wrapper {
+  width: 100%; height: 40px;
+  background: var(--accent);
+  overflow: hidden;
+  display: flex; align-items: center;
+  margin-top: 62px; /* Отступ под хедер */
+  white-space: nowrap;
+}
+.marquee-inner {
+  display: flex;
+  animation: scroll-left 15s linear infinite;
+}
+.marquee-item {
+  display: inline-block; padding-right: 50px;
+  font-family: var(--font-head); font-size: 16px; color: #fff;
+  text-transform: uppercase; letter-spacing: 2px; font-weight: 300; line-height: 40px;
+}
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============ 404 CONTENT ============ */
+.error-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.error-title-small {
+  font-size: 24px;
+  font-weight: 400;
+  color: #e0e0e0;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.error-code {
+  font-family: var(--font-head);
+  font-size: clamp(80px, 15vw, 160px);
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 20px;
+  text-shadow: 0 10px 30px rgba(255, 77, 0, 0.2);
+}
+
+.error-desc {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 40px;
+  max-width: 400px;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .3s var(--ease);
+  background: transparent;
+}
+
+.btn-back:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(255, 77, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* ============ FOOTER (MINIMAL) ============ */
+footer {
+  padding: 30px 0;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: #666;
+  margin-top: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- Декоративный фон -->
+<div class="bg-decor-lines">
+  <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path class="bg-line-path bg-line-1" d="M-200,300 C 400,100 800,600 1200,400 S 1800,200 2200,500" />
+    <path class="bg-line-path bg-line-2" d="M300,-100 C 500,400 100,700 600,900 S 1300,800 1700,1300" />
+  </svg>
+</div>
+
+<header>
+  <div class="header-in">
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+    </nav>
+    <a href="index.html#contacts" class="nav-cta">Обсудить проект
+      <svg class="arr" width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</header>
+
+
+
+<main class="error-container">
+  <div class="error-title-small">Ошибка</div>
+  <div class="error-code">404</div>
+  <p class="error-desc">Кажется, эта страница сейчас не доступна.</p>
+  <a href="index.html" class="btn-back">Вернуться на главную</a>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Анастасия Роженкова. Все права защищены.
+  </div>
+</footer>
+
+</body>
+</html>
